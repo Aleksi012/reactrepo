@@ -21,6 +21,7 @@ function App() {
   function save(e) {
     e.preventDefault();
     const json = JSON.stringify({description:task});
+
     axios.post(URL + 'add.php',json, {
       headers: {
         'Content-Type' : 'application/json'
@@ -58,14 +59,15 @@ function App() {
         <input value={task} placeholder='type description' onChange={e => setTask(e.target.value)} />
         <button>Add</button>
       </form>
-      {tasks?.map(task =>(
+       {tasks?.map(task =>(
         <li key={task.id}>
           {task.description}&nbsp;
           <a href='#' className="delete" onClick={() => remove(task.id)}>
             Delete
           </a>
-          </li>
+        </li>
       ))}
+
     </div>
   );
 }
